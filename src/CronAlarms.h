@@ -6,6 +6,10 @@
 #include <Arduino.h>
 #include <time.h> 
 
+#ifndef _Time_h
+#include <TimeLib.h>
+#endif
+
 extern "C" {
 #include "ccronexpr/ccronexpr.h"
 }
@@ -21,6 +25,10 @@ extern "C" {
 #endif
 
 #define USE_SPECIALIST_METHODS  // define this for testing
+
+// Change to now() if using PaulStoffregen's Time library and you'd
+// like that to use it to determine CronAlarm's times.
+#define CURRENT_TIME_FUNCTION time(nullptr)
 
 typedef uint8_t CronID_t;
 typedef CronID_t CronId;  // Arduino friendly name
